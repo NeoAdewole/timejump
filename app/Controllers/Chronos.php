@@ -1,11 +1,18 @@
 <?php 
   namespace App\Controllers;
 
+  use CodeIgniter\Controller;
+  
+  use CodeIgniter\HTTP\IncomingRequest;
+  $request = service('request');
+
   use Faker\Factory;
   use App\Models\User_model;
 
   // Create a shared instance of the model
   $userModel = model('App\Models\UserModel');
+
+  
 
   class Chronos extends BaseController
   {  
@@ -92,13 +99,38 @@
         throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
       }
 
+      // print_r($request);
+
       $data['title'] = ucfirst($page); // Capitalize the first letter
       // var_dump($this->get_timing());
       $data['timing'] = $this->get_timing();
+      $data['result'] = '';
 
       echo view('templates/header', $data);
       echo view('chronos/' . $page, $data);
       echo view('templates/footer', $data);
+    }
+
+    public function insertByajax() {
+      # to check all inputs are comming.
+      // $timestamp
+      if ($request->isAJAX()){
+        $timestamp = $request->getVar('timestamp');
+        print_r($timestamp);
+        $result = date("Y-m-d h:i:sa", date($timestamp));
+        // $ret ={'stats': 'We hit insert by ajax, now you just need to extract your data'});
+        echo json_encode('We hit insert by ajax, now you just need to extract your data');
+      }
+      // $postData = $this->input->post();
+      // // $postData = $this->input->post('timestamp');
+      // $timestamp = $postData->timestamp;
+      // // convert to date/time return readable string
+      // $result = date("Y-m-d h:i:sa", date($timestamp));
+      // $data['result'] = $result;
+      // // print_r($result);
+      // // echo $result;
+      // // echo json_encode($result);
+      // echo json_encode("We hit insert by ajax, now you just need to extract your data");
     }
 
     public function seed($page = 'seeder') {
