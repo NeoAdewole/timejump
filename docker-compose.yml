@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  timejump:
+    image: codeigniter:latest
+    container_name: wp-portfolio
+    networks:
+      - wpnetwork
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}      
+    

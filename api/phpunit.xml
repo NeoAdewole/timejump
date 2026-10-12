@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing" force="true"/>
+        <env name="APP_KEY" value="base64:3MPMFkGw1Y3wr63oYpu/c/WehjFSuDyG9PzaHjXSMmM=" force="true"/>
+        <env name="APP_URL" value="http://localhost" force="true"/>
+        <env name="BCRYPT_ROUNDS" value="4" force="true"/>
+        <env name="CACHE_STORE" value="array" force="true"/>
+        <env name="DB_CONNECTION" value="sqlite" force="true"/>
+        <env name="DB_DATABASE" value=":memory:" force="true"/>
+        <env name="MAIL_MAILER" value="array" force="true"/>
+        <env name="QUEUE_CONNECTION" value="sync" force="true"/>
+        <env name="SESSION_DRIVER" value="array" force="true"/>
+        <env name="GOOGLE_CLIENT_ID" value="google-client-id" force="true"/>
+        <env name="GOOGLE_CLIENT_SECRET" value="google-client-secret" force="true"/>
+        <env name="GOOGLE_REDIRECT_URI" value="http://localhost/api/integrations/google/callback" force="true"/>
+        <env name="MICROSOFT_CLIENT_ID" value="ms-client-id" force="true"/>
+        <env name="MICROSOFT_CLIENT_SECRET" value="ms-client-secret" force="true"/>
+        <env name="MICROSOFT_REDIRECT_URI" value="http://localhost/api/integrations/outlook/callback" force="true"/>
+        <env name="MICROSOFT_TENANT" value="common" force="true"/>
+        <env name="TIMEJUMP_OAUTH_FRONTEND_REDIRECT" value="" force="true"/>
+        <env name="TIMEJUMP_ICAL_ALLOW_PRIVATE_HOSTS" value="true" force="true"/>
+    </php>
+</phpunit>
